@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  nextjs:
+    build: ./
+  nginx_next:
+    build: ./nginx
+    ports: 
+      - 7999:7999
