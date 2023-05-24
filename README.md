@@ -10,7 +10,7 @@ docker-compose up --build
 
 Open [http://localhost:7999](http://localhost:7999) with your browser to see the result.
 
-### Not working due to ffmpeg
+## Not working due to ffmpeg
 First, run the development server:
 
 ```bash
