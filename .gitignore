@@ -37,3 +37,5 @@ next-env.d.ts
 # Intelij Idea
 .idea
 .vscode
+
+nginx_rtmp/

@@ -26,7 +26,7 @@ export default function CreateStream() {
         </div>
         <div>
             <button onClick={() => changeQuality('_low')}>Low</button>
-            <button onClick={() => changeQuality('_medium')}>Medium</button>
+            <button onClick={() => changeQuality('_mid')}>Medium</button>
             <button onClick={() => changeQuality('_high')}>High</button>
             <button onClick={() => changeQuality('_hd720')}>HD</button>
         </div>
