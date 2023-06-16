@@ -6,9 +6,9 @@ This web application is developed using Next.js and TypeScript. It allows you to
 
 Before getting started, make sure you have the following installed on your machine:
 
-- Node.js (version X.X.X)
-- NPM (version X.X.X)
-- FFMPEG (version X.X.X)
+- Node.js
+- NPM 
+- FFMPEG
 
 ## Installation
 
