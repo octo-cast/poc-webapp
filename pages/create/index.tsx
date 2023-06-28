@@ -2,8 +2,16 @@ import React from 'react';
 
 import styles from '@/styles/Home.module.css' 
 
+//Custom type for settings
+type Settings = {
+  format: string,
+  video: string,
+  audio: string
+}
+
+
 const getRecorderSettings = () => {
-  const settings = {};
+  const settings : Settings = {format: '', video: '', audio: ''};
   if (MediaRecorder.isTypeSupported('video/mp4')) {
     settings.format = 'mp4';
     settings.video = 'h264';
@@ -24,23 +32,24 @@ const getRecorderMimeType = () => {
 
 export default function CreateStream() {
 
-  const canvasRef = React.useRef<HTMLCanvasElement>(null);
-  const videoRef = React.useRef<HTMLVideoElement>(null);
+  const canvasRef = React.useRef<HTMLCanvasElement>();
+  const videoRef = React.useRef<HTMLVideoElement>();
   const requestAnimationRef = React.useRef();
 
   const [preview, setPreview]= React.useState(false);
   const [streaming, setStreaming] = React.useState(false);
   const [wsConnected, setWsConnected] = React.useState(false);
-  const [tmp, setWsURL] = React.useState('ws://localhost:5555/rtmp/');
+  const [tmp, setWsURL] = React.useState('ws://localhost:8081/rtmp/');
 
 
   const previewStream = async (): Promise<void> => {
     //GET SCREEN INPUT
-    const screenInput = await navigator.mediaDevices.getDisplayMedia({ audio: true, video: true });
+    //const screenInput = await navigator.mediaDevices.getDisplayMedia({ audio: true, video: true });
+    //videoRef.current.srcObject = screenInput;
     //GET CAMERA INPUT
-    //const cameraInput = await navigator.mediaDevices.getUserMedia({video:true, audio:true});
+    const cameraInput = await navigator.mediaDevices.getUserMedia({ video: true });
+    videoRef.current.srcObject = cameraInput;
 
-    videoRef.current.srcObject = screenInput;
     await videoRef.current.play();
     setPreview(true);
     requestAnimationRef.current = requestAnimationFrame(updateCanva);
@@ -70,9 +79,10 @@ export default function CreateStream() {
 
   const startStreaming = (): void => {
     setStreaming(true);
-    const settings = getRecorderSettings();
+    const settings : Settings = getRecorderSettings();
     const protocol = window.location.protocol.replace('http', 'ws');
-    const wsUrl = new URL(`${protocol}//${window.location.host}/rtmp`);
+    const wsUrl = new URL(`${protocol}//localhost:8081/rtmp`); //${window.location.host}
+    console.log(wsUrl);
     wsUrl.searchParams.set('video', settings.video);
     wsUrl.searchParams.set('audio', settings.audio);
     wsUrl.searchParams.set('url', 'rtmp://78.199.86.149/live');

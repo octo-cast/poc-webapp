@@ -3,7 +3,7 @@ import React from 'react';
 import ReactPlayer from 'react-player';
 
 export default function CreateStream() {
-  const [url, setUrl] = React.useState("http://78.199.86.149:8080/hls/test_low.m3u8");
+  const [url, setUrl] = React.useState("http://51.159.156.14/hls/test_src.m3u8");
 
   const changeQuality = (quality : string) => {setUrl(url.split('_')[0]+quality+'.m3u8');}
 

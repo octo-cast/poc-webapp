@@ -1,38 +1,13 @@
-const http = require('http');
-const https = require('https');
 const { parse } = require('url');
-const next = require('next');
 const WebSocketServer = require('ws').Server;
 const child_process = require('child_process');
 const url = require('url');
-const fs = require('fs');
 
-const port = 5555;
-const host = process.env.HOST || '0.0.0.0';
-const dev = process.env.NODE_ENV !== 'production';
-const app = next({ dev });
-const handle = app.getRequestHandler();
-const cert = process.env.CERT_FILE ? fs.readFileSync(process.env.CERT_FILE) : undefined;
-const key = process.env.KEY_FILE ? fs.readFileSync(process.env.KEY_FILE) : undefined;
+const port = 8081;
 const transcode = process.env.SMART_TRANSCODE || true;
-const options = {
-  cert,
-  key
-};
-
-app.prepare().then(() => {
-  const server = (cert ? https : http).createServer(options,(req, res) => {
-    const parsedUrl = parse(req.url, true);
-    const { pathname, query } = parsedUrl;
-
-    handle(req, res, parsedUrl);
-  }).listen(port, host, err => {
-    if (err) throw err;
-    console.log(`> Ready on port ${port}`);
-  });
 
   const wss = new WebSocketServer({
-    server: server
+    port: port,
   });
 
   wss.on('connection', (ws, req) => {
@@ -41,7 +16,7 @@ app.prepare().then(() => {
 
     const queryString = url.parse(req.url).search;
     const params = new URLSearchParams(queryString);
-    const rtmpUrl = 'rtmp://78.199.86.149/live/test';
+    const rtmpUrl = 'rtmp://51.159.156.14:1935/live/test';
     //const key = params.get('key');
     const video = params.get('video');
     const audio = params.get('audio');
@@ -112,4 +87,4 @@ app.prepare().then(() => {
       ffmpeg.kill('SIGINT');
     });
   });
-});
+  console.log('The websocket is listening to port 8081');
