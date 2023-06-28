@@ -41,7 +41,7 @@ npm run ws
 2. Open your browser and access the following URL:
 
 ```
-http://localhost:5555
+http://localhost:3000
 ```
 
 3. You can now view and launch livestreams from the application.
