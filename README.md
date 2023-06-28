@@ -73,3 +73,9 @@ git push origin feature/new-feature
 ```
 
 6. Open a pull request in this repository to submit your changes.
+
+## Inspirations
+
+https://www.mux.com/blog/the-state-of-going-live-from-a-browser
+https://github.com/MuxLabs/wocket/blob/master/pages/index.js
+https://github.com/fbsamples/Canvas-Streaming-Example/blob/master/server.js
