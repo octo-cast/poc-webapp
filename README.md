@@ -1,38 +1,81 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Nextjs and Websocket Livestream WebApp
 
-## Getting Started
+This web application is developed using Next.js and TypeScript. It allows you to view and launch livestreams. The application uses a WebSocket server to broadcast the stream to a remote NGINX server using a child process FFMPEG.
 
-First, run the development server:
+## Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+Before getting started, make sure you have the following installed on your machine:
+
+- Node.js
+- NPM 
+- FFMPEG
+
+## Installation
+
+1. Clone this repository to a directory of your choice:
+
+```shell
+git clone https://github.com/octo-cast/poc-webapp.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Navigate to the project directory:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```shell
+cd poc-webapp
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+3. Install the required dependencies:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```shell
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Usage
 
-## Learn More
+1. Start the WebSocket server and the web application:
 
-To learn more about Next.js, take a look at the following resources:
+```shell
+npm run ws
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Open your browser and access the following URL:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
+http://localhost:5555
+```
 
-## Deploy on Vercel
+3. You can now view and launch livestreams from the application.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+If you would like to contribute to this project, you can follow these steps:
+
+1. Fork this repository and clone it to your machine.
+
+2. Create a branch for your modifications:
+
+```shell
+git checkout -b feature/new-feature
+```
+
+3. Make your changes and test them thoroughly.
+
+4. Commit your changes:
+
+```shell
+git commit -m "Add a new feature"
+```
+
+5. Push your changes to your fork:
+
+```shell
+git push origin feature/new-feature
+```
+
+6. Open a pull request in this repository to submit your changes.
+
+## Inspirations
+
+https://www.mux.com/blog/the-state-of-going-live-from-a-browser
+https://github.com/MuxLabs/wocket/blob/master/pages/index.js
+https://github.com/fbsamples/Canvas-Streaming-Example/blob/master/server.js
